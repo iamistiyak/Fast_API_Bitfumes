@@ -1,13 +1,9 @@
-from email.quoprimime import body_check
-from fastapi import FastAPI, Depends, status, Response, HTTPException
-from pydantic import BaseModel, DirectoryPath
-from typing import List
+from fastapi import FastAPI
+from .routers import authentication, blog, user
 from blog import models
-from . import schemas, models
-from .database import SessionLocal, engine
-from sqlalchemy.orm import Session
-# from .hashing import dcrypt
-from  .routers import blog, user, authentication
+from . import  models
+from .database import engine
+
 
 app = FastAPI()
 
