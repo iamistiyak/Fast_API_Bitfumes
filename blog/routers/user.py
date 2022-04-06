@@ -25,3 +25,8 @@ def get_user(id:int,db: Session = Depends(get_db)):
 @router.get('/',response_model=List[schemas.ShowUsers])
 def get_user(db: Session = Depends(get_db)):
     return user.showAll(db)
+
+# Delete particular user
+@router.delete('/{id}')
+def delete_user(id:int,db: Session = Depends(get_db)):
+    return user.deleteUser(id,db)
