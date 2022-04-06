@@ -23,7 +23,8 @@ class User(BaseModel):
     name: str
     password: str
     email: str
-
+    class Config():
+          orm_mode = True 
 # For response model
 class ShowUsers(BaseModel):
       name: str
@@ -33,6 +34,12 @@ class ShowUsers(BaseModel):
       class Config():
           orm_mode = True 
           
+class AuthenticUser(BaseModel):
+    name: str
+    email: str
+    class Config():
+          orm_mode = True 
+
 # For response model
 class ShowBlog(BaseModel):
       title: str
@@ -41,3 +48,18 @@ class ShowBlog(BaseModel):
       creator: ShowUsers
       class Config():
           orm_mode = True           
+
+# For login credentials
+class Login(BaseModel):
+    useremail: str
+    password:str
+
+# For JWT token
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    email: Optional[str] = None
+          

@@ -7,14 +7,14 @@ from . import schemas, models
 from .database import SessionLocal, engine
 from sqlalchemy.orm import Session
 # from .hashing import dcrypt
-from  .routers import blog, user
+from  .routers import blog, user, authentication
 
 app = FastAPI()
 
 # Create and migrate a table
 models.Base.metadata.create_all(bind=engine)
 
-# app.include_router(authentication.router)
+app.include_router(authentication.router)
 app.include_router(blog.router)
 app.include_router(user.router)
 
